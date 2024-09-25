@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+    <title>Lista de Dados</title>
+</head>
+<body>
+  <div class="app">
+    <h1>Lista de Dados</h1>
+
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Sair</button>
+    </form>
+    
+
+    <form method="GET">
+        {{ form.as_p }}
+        <button type="submit">Filtrar</button>
+    </form>
+    <div class="lista-dados">
+    <table>
+      <thead>
+          <tr>
+              <th>Nº Qua</th>
+              <th>Nº Imó</th>
+              <th>Hab</th>
+              <th>Endereço</th>
+              <th>Tipo</th>
+              <th>Data</th>
+              <th>V.Nor</th>
+              <th>Pen</th>
+              <th>Rec</th>
+              <th>A1</th>
+              <th>A2</th>
+              <th>B</th>
+              <th>C</th>
+              <th>D1</th>
+              <th>D2</th>
+              <th>E</th>
+              <th>Insp</th>
+              <th>Amos</th>
+              <th>Nº Amos Ini</th>
+              <th>Nº Amos Fin</th>
+              <th>Tra</th>
+              <th>Qtd. Lar</th>
+              <th>Qtd. Trat</th>
+              <th>Ações</th>
+          </tr>
+      </thead>
+      <tbody>
+          {% for dado in dados %}
+          <tr>
+              <td>{{ dado.numero_quarteirao }}</td>
+              <td>{{ dado.numero_imovel }}</td>
+              <td>{{ dado.qtd_moradores }}</td>
+              <td>{{ dado.endereco }}</td>
+              <td>{{ dado.get_tipo_imovel_display }}</td>
+              <td>{{ dado.data_cadastro|date:"d/m/Y" }}</td>
+              <td>{{ dado.visita_normal|yesno:"Sim,Não" }}</td>
+              <td>{{ dado.pendente|yesno:"Sim,Não" }}</td>
+              <td>{{ dado.imovel_recuperado|yesno:"Sim,Não" }}</td>
+              <td>{{ dado.qtd_deposito_a1 }}</td>
+              <td>{{ dado.qtd_deposito_a2 }}</td>
+              <td>{{ dado.qtd_deposito_b }}</td>
+              <td>{{ dado.qtd_deposito_c }}</td>
+              <td>{{ dado.qtd_deposito_d1 }}</td>
+              <td>{{ dado.qtd_deposito_d2 }}</td>
+              <td>{{ dado.qtd_deposito_e }}</td>
+              <td>{{ dado.imovel_inspecionado|yesno:"Sim,Não" }}</td>
+              <td>{{ dado.qtd_amostras }}</td>
+              <td>{{ dado.numero_amostra_inicial }}</td>
+              <td>{{ dado.numero_amostra_final }}</td>
+              <td>{{ dado.imovel_tratado|yesno:"Sim,Não" }}</td>
+              <td>{{ dado.quantidade_larvicida }}</td>
+              <td>{{ dado.quantidade_depositos_tratados }}</td>
+              <td class="acoes">
+                <a class="editar" href="{% url 'editar_dados' dado.pk %}">Editar</a>
+                <a class="excluir" href="{% url 'excluir_dados' dado.pk %}">Excluir</a>
+            </td>
+          </tr>
+          {% empty %}
+          <tr>
+              <td colspan="22">Nenhum dado cadastrado ainda.</td>
+          </tr>
+          {% endfor %}
+      </tbody>
+      <tfoot>
+        <tr>
+            <td colspan="1"><strong>Totais</strong></td>
+            <td>{{ total_imoveis }}</td>
+            <td>{{ total_moradores }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{{ total_visita_normal }}</td>
+            <td>{{ total_pendente }}</td>
+            <td>{{ total_imovel_recuperado }}</td>
+            <td>{{ total_deposito_a1 }}</td>
+            <td>{{ total_deposito_a2 }}</td>
+            <td>{{ total_deposito_b }}</td>
+            <td>{{ total_deposito_c }}</td>
+            <td>{{ total_deposito_d1 }}</td>
+            <td>{{ total_deposito_d2 }}</td>
+            <td>{{ total_deposito_e }}</td>
+            <td>{{ total_imovel_inspecionado }}</td>
+            <td>{{ total_amostras }}</td>
+            <td></td>
+            <td></td>
+            <td>{{ total_imovel_tratado }}</td>
+            <td>{{ total_larvicida }}</td>
+            <td>{{ total_depositos_tratados }}</td>
+        </tr>
+    </tfoot>
+  </table>
+</div>
+  <div class="totais">
+    
+    <div class="totais-section">
+        <p>Habitantes: {{ total_moradores }}</p>
+        <p>Total imóveis: {{ total_imoveis }}</p>
+        <p>Residenciais: {{ total_R }}</p>
+        <p>Comerciais: {{ total_C }}</p>
+        <p>Terrenos Baldios: {{ total_TB }}</p>
+        <p>Pontos Estratégicos: {{ total_PE }}</p>
+        <p>Outros: {{ total_O }}</p>
+    </div>
+    <div class="totais-section">
+        <p>A1: {{ total_deposito_a1 }}</p>
+        <p>A2: {{ total_deposito_a2 }}</p>
+        <p>B: {{ total_deposito_b }}</p>
+        <p>C: {{ total_deposito_c }}</p>
+        <p>D1: {{ total_deposito_d1 }}</p>
+        <p>D2: {{ total_deposito_d2 }}</p>
+        <p>E: {{ total_deposito_e }}</p>
+        <p>Amostras: {{ total_amostras }}</p>
+        
+    </div>
+    <div class="totais-section">   
+        <p>Normais: {{ total_visita_normal }}</p>
+        <p>Pendentes: {{ total_pendente }}</p>
+        <p>Recuperados: {{ total_imovel_recuperado }}</p>
+        <p>Inspecionados: {{ total_imovel_inspecionado }}</p>
+        <p>Tratados: {{ total_imovel_tratado }}</p>
+        <p>Qtd. larvicida: {{ total_larvicida }}</p>
+        <p>Depósitos tratados: {{ total_depositos_tratatados }}</p>
+    </div>
+    </div>
+    <div class="links">
+        <a href="{% url 'cadastrar_dados' %}">Cadastrar Novo Dado</a>
+        <a href="{% url 'gerar_relatorio_pdf' %}?{% if request.GET %}{{ request.GET.urlencode }}{% endif %}">Gerar PDF</a>
+
+
+    </div>
+
+</body>
+</html>

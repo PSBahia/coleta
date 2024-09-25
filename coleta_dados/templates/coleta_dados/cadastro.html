@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+    <title>Cadastro de Dados</title>
+</head>
+<body>
+  <div class="app">
+    <h1>Cadastro de Dados</h1>
+
+    <form action="{% url 'logout' %}" method="post">
+      {% csrf_token %}
+      <button type="submit">Sair</button>
+    </form>
+  
+    <form method="POST"> 
+
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit">Cadastrar</button>
+    </form>
+    <a class="links" href="{% url 'listar_dados' %}">Ver Lista de Dados</a>
+  </div>
+</body>
+</html>

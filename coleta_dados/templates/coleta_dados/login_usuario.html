@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+    <title>Login</title>
+</head>
+<body>
+    <div class="exclusao">
+        <div class="confirmar-exclusao">
+            <h2>Login</h2>
+            <form method="post" action="{% url 'login_usuario' %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Entrar</button>
+            </form>
+            <form action="{% url 'cadastrar_usuario' %}" method="post">
+                {% csrf_token %}
+                <button type="submit">Cadastre-se</button>
+            </form>
+</body>
+</html>
