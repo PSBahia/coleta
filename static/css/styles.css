@@ -1,0 +1,198 @@
+/* static/css/styles.css */
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.app{
+  display: grid;
+  background-color: rgb(236, 235, 236);
+  justify-content: center;
+}
+
+.app .errorlist{
+  color: red; /* ou a cor desejada */
+  background-color: #f8d7da;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+h1 {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color: #0a0a0a;
+  text-align: center;
+}
+
+form {
+  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+  margin-bottom: 20px;
+  background-color: rgb(228, 225, 225);
+  padding: 20px;
+  justify-content: center;
+}
+
+form button{
+  margin: auto;
+  border-radius: 5px;
+  border: none;
+}
+
+form input{
+  height: 25px;
+  border-radius: 5px;
+  border: none;
+  padding: 2px;
+  margin-top: 5px;
+}
+
+.lista-dados{
+  overflow-x: scroll;
+  margin: 20px;
+}
+
+.totais{
+  display: flex;
+  margin: 20px;
+  font-size: small;
+  background-color: #fffefe;
+  padding: 10px;
+}
+
+.totais-section{
+  padding-right: 20px;
+}
+
+.links{
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  margin: 20px;
+}
+
+a{
+  text-decoration: none;
+  background-color: green;
+  color: #fffefe;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+button{
+  background-color: rgb(1, 1, 80);
+  text-decoration: none;
+  padding: 10px;
+  color: #fffefe;
+  width: auto;
+  max-width: 100px;
+}
+
+.acoes{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 5px;
+  align-items: center;
+  height: max-content;
+}
+
+.acoes a{
+  text-decoration: none;
+  padding: 3px;
+  color: #fffefe;
+  border-radius: 3px;
+}
+
+.editar{
+  background-color: rgb(1, 1, 80);
+}
+
+.excluir{
+  background-color: rgb(184, 3, 3);
+  border: none;
+  border-radius: 5px;  
+}
+
+ul {
+  list-style-type: none;
+  padding: 20px;
+  background-color: #fffefe;
+}
+
+li {
+  padding: 5px 0;
+}
+
+table, th, td{
+  background: #fffefe;
+  border: 1px solid #969595;
+  border-collapse: collapse;
+  text-align: center;
+  font-size: small;
+  padding: 2px;
+}
+
+.errorlist{
+  display: none;
+}
+.errorlist p label{
+  display: none;
+}
+
+.helptext{
+  font-size: small;
+  color: #969595;
+}
+
+.exclusao{
+  display: grid;
+  background-color: #0a0a0a79;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.confirmar-exclusao{
+  border-radius: 20px;
+  padding: 20px;
+  margin: auto;
+  min-width: 250px;
+  width: 50%;
+  max-width: 500px;
+  background-color: rgb(228, 225, 225);
+  box-shadow: 0px 5px 10px 5px black;
+}
+
+input[type="number"] {
+  /* Aqui você adiciona os seus estilos */
+  border: 1px solid rgb(145, 145, 247);
+  padding: 2px;
+  width: 30px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin:   
+ 0;
+}
+
+p{
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 768px) {
+  form {
+    grid-template-columns: 1fr; /* Uma coluna para telas pequenas */
+  }
+}

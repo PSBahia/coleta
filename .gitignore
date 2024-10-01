@@ -7,12 +7,6 @@ __pycache__/
 # Arquivos de log
 *.log
 
-# Pasta de configurações do banco de dados local (SQLite)
-db.sqlite3
-
-# Pasta de migrações (gerada automaticamente)
-*/migrations/
-
 # Arquivos estáticos coletados
 staticfiles/
 
@@ -32,9 +26,6 @@ staticfiles/
 # Chave secreta e configurações locais (caso use um arquivo local_settings.py)
 local_settings.py
 .env
-
-# Coleta de arquivos estáticos (se usar collectstatic)
-static/
 
 # Ignorar arquivos do sistema operacional
 .DS_Store
